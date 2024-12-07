@@ -1,0 +1,210 @@
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a472a, #2d5a4c);
+  font-family: "Arial", sans-serif;
+}
+
+.snow-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  pointer-events: none;
+}
+
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 20px auto;
+}
+
+.box {
+  position: relative;
+  height: 150px;
+  background: #c41e3a;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.box.large {
+  grid-column: span 2;
+  grid-row: span 2;
+  height: 315px;
+}
+
+.box.medium {
+  grid-column: span 2;
+  height: 150px;
+}
+
+.box.opened {
+  transform: rotateY(180deg);
+}
+
+.box-front,
+.box-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.box-front {
+  background: linear-gradient(145deg, #d4263e, #aa1830);
+  color: white;
+  font-size: 2em;
+  font-weight: bold;
+  border: 2px dashed #fff;
+}
+
+.box-back {
+  transform: rotateY(180deg);
+  background: #fff;
+  padding: 10px;
+}
+
+.box-back img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+/* Ajoutez ceci à votre fichier style.css */
+.box:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s;
+}
+
+/* Ajoutez ceci à votre fichier style.css */
+@keyframes openBox {
+  0% {
+    transform: rotateY(0);
+  }
+  100% {
+    transform: rotateY(180deg);
+  }
+}
+
+.box.opened {
+  animation: openBox 0.6s forwards;
+}
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  margin: 20px auto;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  max-width: 600px;
+}
+
+.countdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+
+.countdown-item span {
+  font-size: 2.5em;
+  font-weight: bold;
+}
+
+.countdown-item .label {
+  font-size: 0.9em;
+  margin-top: 5px;
+}
+
+.media {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+/* ...existing code... */
+
+.box-12-3 {
+  grid-column: span 4;
+  grid-row: span 1;
+  height: 75px;
+}
+
+.fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.fullscreen .media {
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1.2em;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.box-back.opened {
+  background-color: orange;
+}
+
+/* ...existing code... */
+
+.play-btn, .stop-btn, .fullscreen-btn {
+  background: orange;
+  border: 2px solid #FFD700; /* Blonde border */
+  border-radius: 10px; /* Rounded corners */
+  padding: 5px 10px;
+  font-size: 1em;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.stop-btn {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.fullscreen-btn {
+  position: absolute;
+  bottom: 10px;
+  right: 70px;
+}
+
+.play-btn {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+/* ...existing code... */
